@@ -5,7 +5,7 @@ import ua.ithillel.lms.homework5.model.WordsGame;
 public class Main {
     public static void main(String[] args) {
 
-        WordsGame wordsGame = new WordsGame();
+         WordsGame wordsGame = new WordsGame();
 
         System.out.println("Other homework");
 
@@ -24,6 +24,11 @@ public class Main {
     }
 
     public static int findSymbolOccurance(String str, char symbol) {
+        if (str == null || symbol == '\0') {
+            System.out.println("There is empty parameter");
+            return 0;
+        }
+
         char buff[] = str.toCharArray();
         int count = 0;
 
@@ -39,20 +44,12 @@ public class Main {
     }
 
     public static String stringReverse(String str) {
-        String reversedStr = "";
-
-        for (int i = 0; i < str.length(); i++) {
-            reversedStr = str.charAt(i) + reversedStr;
-        }
-
-        return reversedStr;
+        return new StringBuilder(str).reverse().toString();
     }
 
     public static boolean isPalindrome(String str) {
         str = str.toLowerCase();
 
-        if (str.equals(stringReverse(str)))
-            return true;
-        return false;
+        return str.equals(stringReverse(str));
     }
 }
